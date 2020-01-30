@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Location</string>
     <string name="Warning">permission needed</string>
-    <string name="">permission needed</string>
+    <string name="gtt">permission needed</string>
 </resources>

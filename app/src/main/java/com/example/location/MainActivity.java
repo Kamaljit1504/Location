@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
         fusedLocationProvderClient = LocationServices.getFusedLocationProviderClient(this);
         // initialize the location Manager
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
+
+
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -112,16 +115,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//
+//        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                return;
+//
+//            }
+//
+//            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+//
+//        }
 
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                return;
-
-            }
-
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
-        }
 
         start.setOnClickListener(new View.OnClickListener() {
 
@@ -187,6 +191,14 @@ public class MainActivity extends AppCompatActivity {
         {
             Log.i(TAG, "requestpermission:" + "Displaying the permission rationale");
             //provide a way so that user can grant permission
+
+            showSnakbar(R.string.Warning, android.R.string.ok, new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
         }
         else
         {
